@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title>Salary Greater Than</title>
+    {% endif %}
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>IBM Cloud</h1>
+      <h2> Tharoon T Thiagarajan </h2>
+      <h2> 1001704601 </h2>
+      <br>
+
+       <center>
+      {#{% if table is not None %}#}
+          <table>
+            <thead>
+                  <th id=td1> Name </th>
+                  <th id=td1> Salary </th>
+                  <th id=td1> Room </th>
+                  <th id=td1> Telnum </th>
+                  <th id=td1>Picture</th>
+                  <th id=td1> keywords </th>
+            </thead>
+
+            <tbody>
+              {% for value in table %}
+            <tr>
+                  <td id=td1> {{ value[0] }} </td>
+                  <td id=td1> {{ value[1] }} </td>
+                  <td id=td1> {{ value[2] }} </td>
+                  <td id=td1> {{ value[3] }} </td>
+                  <td id=td1> <img src="https://s3.us-south.cloud-object-storage.appdomain.cloud/tcubestorage-cos-standard-s1c/{{value[4]}}" height="50" width="75"> </td>
+                  <td id=td1> {{ value[5] }} </td>
+            </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      {#{% else %}#}
+          {#<div>No data available</div>#}
+      {#{% endif %}#}
+        </center>
+      <br>
+      <br>
+
+
+    </div>
+
+  </body>
+</html>

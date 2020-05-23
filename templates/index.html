@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title>Home</title>
+    {% endif %}
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>IBM Cloud</h1>
+      <h3> Revathi</h3>
+      <h3> 1001663569 </h3>
+      <br>
+
+      <center>
+      {#{% if table is not None %}#}
+          <table style = "width: 100%">
+            <thead>
+              <th id=td1> PIC </th>
+              <th id=td1> OWNER </th>
+              <th id=td1> NAME </th>
+            </thead>
+
+            <tbody>
+              {% for value in table %}
+            <tr>
+                  <td id=td1> <img src="https://s3.us-south.cloud-object-storage.appdomain.cloud/tcubestorage-cos-standard-s1c/{{value[0]}}" height="100" width="100"> </td>
+                  <td id=td1> {{ value[1] }} </td>
+                  <td id=td1> {{ value[2] }} </td>
+            </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      {#{% else %}#}
+          {#<div>Data not available</div>#}
+      {#{% endif %}#}
+        </center>
+
+      <br>
+      <br>
+
+      <form action="/show" method="POST" >
+        <h3> Search for Image</h3><br>
+        <label> Enter Name: </label> <input type="text" name="name" required><br> 
+        <input type="submit" value="Display image">
+      </form>
+      <br>
+
+      <form action="/insert" method="POST" >
+        <h3>Insert an Image</h3><br>
+        <label> Enter Name: </label> <input type="text" name="name" required><br>
+        <label> Image: </label> <input type="text" name="file" pattern=".+\.jpg$"><br> 
+        <input type="submit" name="upload" value="Upload">
+      </form>
+      <br>
+
+      <form action="/update" method="POST">
+        <h3>Update Keywords</h3><br>
+        <label> Enter Name: </label> <input type="text" name="name" required><br>
+        <label> Enter Keyword: </label> <input type="text" name="keywords" required><br>
+        <input type="submit" value="Update">
+      </form>
+      <br>
+
+
+      <form action="/updateImage" method="POST">
+        <h3>Update Picture</h3><br>
+        <label> Enter Name: </label> <input type="text" name="name" required><br>
+        <label> Enter Image: </label> <input type="text" name="image" required><br>
+        <input type="submit" value="Update Image">
+      </form>
+      <br>
+
+      <form action="/delete" method="POST" >
+        <h3>Delete an Entry</h3><br>
+        <label> Enter Name: </label> <input type="text" name="dname" required><br> 
+        <input type="submit" value="Delete">
+      </form>
+      <br>
+
+      <form action="/withinrange" method="POST" >
+        <h3>Search for OWNER Range</h3><br>
+        <label> OWNER: From: </label> <input type="number" name="from" pattern="^[0-9]$" required> <br>
+        <label> To: </label> <input type="number" name="to" pattern="^[0-9]$" required><br> 
+        <input type="submit" value="Search"><br> 
+      </form>
+      <br>
+
+      <form action="/greaterthan" method="POST" >
+        <h3>Search for Salary(Greater)</h3><br>
+        <label> Search Salary greater than: </label> <input type="number" name="range1" pattern="^[0-9]$" required> <br>
+        <input type="submit" value="Search"> 
+      </form>
+      <br>
+
+      <form action="/lessthan" method="POST" >
+        <h3>Search for Salary(Lesser)</h3><br>
+        <label> Search Salary less than: </label> <input type="number" name="range1" pattern="^[0-9]$" required> <br> 
+        <input type="submit" value="Search"> 
+      </form>
+      <br>
+      <br>
+
+      <form action="/readFile" method="POST" >
+        <input type="button" name="file"> 
+        <input type="submit" value="Read File"> 
+      </form>
+      <br>
+      <br>
+
+
+
+    </div>
+
+  </body>
+</html>
